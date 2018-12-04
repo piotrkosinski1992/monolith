@@ -11,7 +11,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import monolith.user.common.api.datatype.Role;
 import monolith.user.dataaccess.api.UserEntity;
 import monolith.user.dataaccess.api.dao.UserDao;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+@EnableSwagger2
 @SpringBootApplication
 public class ShopMonolithApplication implements CommandLineRunner {
 
@@ -27,8 +29,8 @@ public class ShopMonolithApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		userDao.save(new UserEntity("piotr",passwordEncoder.encode("kosinski") , Role.USER));
-		userDao.save(new UserEntity("admin",passwordEncoder.encode("admin") , Role.ADMIN));
+		userDao.save(new UserEntity("piotr",passwordEncoder.encode("kosinski") , Role.USER, "piotrkosinski1992@o2.pl"));
+		userDao.save(new UserEntity("admin",passwordEncoder.encode("admin") , Role.ADMIN, "natasza13@vp.pl"));
 	}
 	
 	@Bean
