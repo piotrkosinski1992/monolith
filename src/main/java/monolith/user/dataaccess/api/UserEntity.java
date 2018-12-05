@@ -1,31 +1,44 @@
 package monolith.user.dataaccess.api;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
+import monolith.cart.dataaccess.api.CartEntity;
 import monolith.user.common.api.datatype.Role;
 import monolith.user.logic.api.to.UserTO;
 
 @Entity
+@Table(uniqueConstraints={@UniqueConstraint(columnNames = {"email"})}) //doesn't work
 public class UserEntity {
 
 	@Id
 	@GeneratedValue
 	private Long id;
 	
+	@Column(nullable=false) 
 	private String username;
 	
+	@Column(nullable=false) 
 	private String password;
 	
-	@Column(unique = true)
+	@Column(nullable=false, unique = true) //doesn't work 
 	private String email;
 	
+	@Column(nullable=false) 
 	@Enumerated(EnumType.STRING)
 	private Role role;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private CartEntity cartEntity;
 
 	public UserEntity() {
 	}
@@ -42,13 +55,6 @@ public class UserEntity {
 		this.role = userEntity.getRole();
 		this.username = userEntity.getUsername();
 		this.password = userEntity.getPassword();
-	}
-
-	public UserEntity(UserTO userTO) {
-		this.email = userTO.getEmail();
-		this.username = userTO.getUsername();
-		this.password = userTO.getPassword();
-		this.role = userTO.getRole();
 	}
 
 	public Long getId() {
@@ -87,4 +93,11 @@ public class UserEntity {
 		this.email = email;
 	}
 
+	public CartEntity getCartEntity() {
+		return cartEntity;
+	}
+
+	public void setCartEntity(CartEntity cartEntity) {
+		this.cartEntity = cartEntity;
+	}	
 }

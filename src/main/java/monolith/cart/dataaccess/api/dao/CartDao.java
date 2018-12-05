@@ -6,4 +6,5 @@ import monolith.cart.dataaccess.api.CartEntity;
 
 public interface CartDao extends JpaRepository<CartEntity, Long> {
 
+	CartEntity findByUserEntityId(Long id);
 }

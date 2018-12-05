@@ -4,6 +4,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import monolith.cart.dataaccess.api.CartEntity;
 import monolith.user.common.api.datatype.Role;
 import monolith.user.dataaccess.api.UserEntity;
 
@@ -22,22 +23,17 @@ public class UserTO {
 	private String email;
 	
 	private Role role;
+	
+	private CartEntity cartEntity;
 
 	public UserTO() {
 	}
 
-	public UserTO(String username, Role role, String password, String email) {
+	public UserTO(String username, String password, Role role, String email) {
 		this.email = email;
 		this.username = username;
 		this.password = password;
 		this.role = role;
-	}
-	
-	public UserTO(UserEntity userEntity) {
-		this.id = userEntity.getId();
-		this.email = userEntity.getEmail();
-		this.username = userEntity.getUsername();
-		this.role = userEntity.getRole();
 	}
 
 	public String getUsername() {
@@ -74,5 +70,19 @@ public class UserTO {
 
 	public Long getId() {
 		return id;
+	}
+
+	public CartEntity getCartEntity() {
+		return cartEntity;
+	}
+
+	public void setCartEntity(CartEntity cartEntity) {
+		this.cartEntity = cartEntity;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}	
+	
+
 }
