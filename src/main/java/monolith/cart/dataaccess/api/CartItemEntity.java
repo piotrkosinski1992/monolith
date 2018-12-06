@@ -1,13 +1,13 @@
 package monolith.cart.dataaccess.api;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
-import monolith.cart.logic.api.to.CartItemTO;
-import monolith.cart.logic.api.to.CartTO;
 import monolith.product.dataaccess.api.ProductEntity;
 
 @Entity
@@ -17,7 +17,7 @@ public class CartItemEntity {
 	@GeneratedValue
 	private Long id;
 	
-	@ManyToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "product_id")
 	private ProductEntity productEntity;
 	

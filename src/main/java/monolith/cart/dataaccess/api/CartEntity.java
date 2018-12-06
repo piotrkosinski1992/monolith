@@ -30,10 +30,6 @@ public class CartEntity {
 	public CartEntity() {
 	}
 
-	public CartEntity(CartTO cartTO) {
-		this.id = cartTO.getId();
-	}
-
 	public List<CartItemEntity> getCartItems() {
 		return cartItems;
 	}
@@ -56,6 +52,10 @@ public class CartEntity {
 
 	public void addToCart(CartItemEntity cartItemEntity) {
 		cartItems.add(cartItemEntity);
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 }

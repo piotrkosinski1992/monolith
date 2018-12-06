@@ -36,6 +36,7 @@ public class ShopMonolithApplication implements CommandLineRunner {
 		userManagement.addUser(new UserTO("admin","admin" , Role.ADMIN, "natasza13@vp.pl"));
 		
 		productDao.save(new ProductEntity("ferrari", "auto", "szybkie auto"));
+		productDao.save(new ProductEntity("fiat", "autko", "wolne autko"));
 	}
 	
 	@Bean

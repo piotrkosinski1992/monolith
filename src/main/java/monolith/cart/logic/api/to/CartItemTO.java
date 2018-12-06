@@ -10,8 +10,6 @@ public class CartItemTO {
 	
 	private int amount;
 	
-	private CartTO cartTO;
-
 	public CartItemTO() {
 	}
 
@@ -35,13 +33,9 @@ public class CartItemTO {
 		return id;
 	}
 
-	public CartTO getCartTO() {
-		return cartTO;
+	public void setId(Long id) {
+		this.id = id;
 	}
-
-	public void setCartTO(CartTO cartTO) {
-		this.cartTO = cartTO;
-	}
-
+	
 	
 }

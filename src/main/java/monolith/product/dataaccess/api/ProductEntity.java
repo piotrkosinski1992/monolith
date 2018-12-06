@@ -54,4 +54,9 @@ public class ProductEntity {
 	public void setLongDescription(String longDescription) {
 		this.longDescription = longDescription;
 	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 }
